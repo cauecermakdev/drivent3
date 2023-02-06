@@ -38,7 +38,7 @@ beforeEach(async () => {
 const server = supertest(app);
 
 describe('GET /hotels', () => {
-  it('should respond with status 401 if no token is given', async () => {
+  it('if no token is given should respond with status 401 ', async () => {
     const response = await server.get('/hotels');
 
     expect(response.status).toBe(httpStatus.UNAUTHORIZED);
@@ -62,7 +62,7 @@ describe('GET /hotels', () => {
   });
 
   describe('when token is valid', () => {
-    it('should respond with status 404 if user doesnt have enrollment yet', async () => {
+    it('should respond with status 404 if user doesnt have enrollment', async () => {
       const token = await generateValidToken();
 
       const response = await server.get('/hotels').set('Authorization', `Bearer ${token}`);
